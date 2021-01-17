@@ -1,0 +1,152 @@
+body {
+  color: #000;
+}
+
+.header {
+  .logo {
+      width: 120px;
+      height: 82px;
+  }
+}
+
+.headline {
+  .caption {
+    position: relative;
+    width: 350px;
+    .image {
+      img {
+    width: 100%;
+      }
+    }
+    .title {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      h1 {
+    color: #fff;
+    font-size: 1.2em;
+      }
+    }
+    .body {
+      font-size: 0.8em;
+    }
+  }
+}
+
+.posts {
+  .post {
+    .date {
+      font-size: 0.6em;
+      color: #999999;
+    }
+    .title {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .body {
+      font-size: 0.8em;
+    }
+    .image {
+      img {
+    width: 250px;
+      }
+    }
+  }
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    height: 100px; 
+    text-align: center; 
+    background-color: #ccffff;
+    color: #000;
+}
+.glovalNavigation{
+    height: 100px; 
+    text-align: center; 
+    background-color: #fff;
+    color: #000;
+}
+
+.navbar-nav{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.content{
+    flex: 1;
+    height: 500px;
+    text-align: center;
+    margin: 10px 0 10px 0;
+    background-image: url("depositphotos_71471487-stock-photo-souvenirs-from-around-the-world.jpg");
+     opacity: 0.5;
+     background-size: contain;
+     color: #000;
+     h3{color:rgba(0,0,255,1.0);}
+     background-repeat: no-repeat;
+     background-position: center center;
+     background-size: cover;
+}
+.slider{
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+ 
+.slider__content{
+    min-width: 100%;
+    animation: sliderAnime 12s ease-in-out infinite;
+}
+  
+@keyframes sliderAnime{
+    0%{
+ 
+    }
+    16.6%{
+        transform: translateX(0);
+    }
+    33.3%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    66.6%{
+        transform: translateX(-200%);
+    }
+    83.2%{
+        transform: translateX(-200%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+} 
+ 
+.slider__img{
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.localNavigation{
+    height: 70px;
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+}
+.footer{
+    height: 20px;
+    text-align: center;
+    background-color: #fff;
+}

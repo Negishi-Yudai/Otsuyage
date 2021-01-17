@@ -1,0 +1,184 @@
+body {
+  color: #000;
+}
+
+.header .logo {
+  width: 120px;
+  height: 82px;
+}
+
+.headline .caption {
+  position: relative;
+  width: 350px;
+}
+
+.headline .caption .image img {
+  width: 100%;
+}
+
+.headline .caption .title {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.headline .caption .title h1 {
+  color: #fff;
+  font-size: 1.2em;
+}
+
+.headline .caption .body {
+  font-size: 0.8em;
+}
+
+.posts .post .date {
+  font-size: 0.6em;
+  color: #999999;
+}
+
+.posts .post .title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.posts .post .body {
+  font-size: 0.8em;
+}
+
+.posts .post .image img {
+  width: 250px;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 100px;
+  text-align: center;
+  background-color: #ccffff;
+  color: #000;
+}
+
+.glovalNavigation {
+  height: 100px;
+  text-align: center;
+  background-color: #fff;
+  color: #000;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.content {
+  flex: 1;
+  height: 500px;
+  text-align: center;
+  margin: 10px 0 10px 0;
+  background-image: url(/images/depositphotos_71471487-stock-photo-souvenirs-from-around-the-world.jpg?ef6b54e9d0065a74bfa627a149dcf7ab);
+  opacity: 0.5;
+  background-size: contain;
+  color: #000;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.content h3 {
+  color: blue;
+}
+
+.slider {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.slider__content {
+  min-width: 100%;
+  -webkit-animation: sliderAnime 12s ease-in-out infinite;
+          animation: sliderAnime 12s ease-in-out infinite;
+}
+
+@-webkit-keyframes sliderAnime {
+  16.6% {
+    transform: translateX(0);
+  }
+
+  33.3% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(-100%);
+  }
+
+  66.6% {
+    transform: translateX(-200%);
+  }
+
+  83.2% {
+    transform: translateX(-200%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes sliderAnime {
+  16.6% {
+    transform: translateX(0);
+  }
+
+  33.3% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(-100%);
+  }
+
+  66.6% {
+    transform: translateX(-200%);
+  }
+
+  83.2% {
+    transform: translateX(-200%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.slider__img {
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.localNavigation {
+  height: 70px;
+  text-align: center;
+  background-color: #fff;
+  color: #000;
+}
+
+.footer {
+  height: 20px;
+  text-align: center;
+  background-color: #fff;
+}
+
