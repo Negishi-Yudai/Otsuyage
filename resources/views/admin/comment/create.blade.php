@@ -17,7 +17,18 @@
                             @endforeach
                         </ul>
                     @endif
-                   
+                   <div class="form-group row">
+                        <label class="col-md-2" for="tennmei">氏名（店名）</label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="tennmei" value="{{ $tennmei }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2" for="gaiyou">概要</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" name="gaiyou" rows="10">{{ $gaiyou }}</textarea>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-md-2" for="comment">コメント</label>
                         <div class="col-md-10">

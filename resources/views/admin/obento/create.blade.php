@@ -53,6 +53,7 @@
                     　　　　<div class="gaiyou">
                                 <div class="tennmei">{{ $obento->tennmei }}</div>
                                 <div class="gaiyou">{{ $obento->gaiyou }}</div>
+                                <div class="nav-item active"><a href="{{ action('Admin\CommentController@create',['id' => $obento->id, 'syurui' => 'obento']) }}">コメントする</a></div>
                             </div>
                         </div>
                     @endforeach
