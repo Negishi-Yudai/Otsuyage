@@ -17,6 +17,7 @@
                             @endforeach
                         </ul>
                     @endif
+                   
                     <div class="form-group row">
                         <label class="col-md-2" for="comment">コメント</label>
                         <div class="col-md-10">
@@ -25,7 +26,7 @@
                     </div>
                     {{ csrf_field() }}
                      <div class="text-center mb-4">
-                    <input type="submit" class="btn btn-primary" value="投稿">
+                    <input type="submit" class="btn btn-primary" value="書き込む">
                 </form>
             </div>
             
