@@ -1,12 +1,12 @@
 @extends('layouts.admin')
-@section('title', 'コメント')
+@section('title', 'お土産編集')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>コメント</h2>
-                <form action="{{ action('Admin\CommentController@store') }}" method="post" enctype="multipart/form-data">
+                <h2>お土産編集</h2>
+                <form action="{{ action('Admin\OmiyageController@update') }}" method="post" enctype="multipart/form-data">
 
                    // 以下を追記
 
@@ -17,32 +17,30 @@
                             @endforeach
                         </ul>
                     @endif
-                   <div class="form-group row">
-                        <label class="col-md-2" for="tennmei">氏名（店名）</label>
+                    <div class="form-group row">
+                        <label class="col-md-2" for="tennmei">店名</label>
                         <div class="col-md-10">
-                           {{ $tennmei }}
+                            <input type="text" class="form-control" name="tennmei" value="{{$omiyage_form->tennmei}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2" for="gaiyou">概要</label>
                         <div class="col-md-10">
-                            {{ $gaiyou }}
+                            <textarea class="form-control" name="gaiyou" rows="20">{{$omiyage_form->gaiyou}}</textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2" for="comment">コメント</label>
+                        <label class="col-md-2" for="title">画像</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="comment" value="{{ old('comment') }}">
+                            <input type="file" class="form-control-file" name="image">
                         </div>
                     </div>
                     {{ csrf_field() }}
                      <div class="text-center mb-4">
-                    <input type="submit" class="btn btn-primary" value="書き込む">
-                    <input type="hidden" name="syurui" value="{{$syurui}}">
-                            <input type="hidden" name="omiyage_or_obento_id" value="{{$omiyage_or_obento_id}}">
+                        <input type="hidden" name="id" value="{{$omiyage_form->id}}">
+                    <input type="submit" class="btn btn-primary" value="再投稿">
                 </form>
             </div>
-            
         </div>
     </div>
 @endsection

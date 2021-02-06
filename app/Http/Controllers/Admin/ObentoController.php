@@ -39,4 +39,39 @@ class ObentoController extends Controller
         $obento->save();
         return redirect('admin/obento/create');
     }
+    public function edit(Request $request)
+  {
+      // Obento Modelからデータを取得する
+      $obento = Obento::find($request->id);
+      if (empty($obento)) {
+        abort(404);    
+      }
+      return view('admin.obento.edit', ['obento_form' => $obento]);
+  }
+    public function update(Request $request)
+  {
+      // Validationをかける
+      $this->validate($request, Obento::$rules);
+      // News Modelからデータを取得する
+      $obento = Obento::find($request->id);
+      // 送信されてきたフォームデータを格納する
+      $obento_form = $request->all();
+      if ($request->remove == 'true') {
+          $obento_form['image_path'] = null;
+      } elseif ($request->file('image')) {
+          $path = $request->file('image')->store('public/image');
+          $obento_form['image_path'] = basename($path);
+      } else {
+          if(isset($obento->image_path)){
+            $obento_form['image_path'] = $obento->image_path;
+          }
+      }
+      unset($obento_form['image']);
+      unset($obento_form['_token']);
+
+      // 該当するデータを上書きして保存する
+      $obento->fill($obento_form)->save();
+
+      return redirect('admin/obento/create');
+  }
 }

@@ -13,4 +13,10 @@ class Omiyage extends Model
         'tennmei' => 'required',
         'gaiyou' => 'required',
         );
+        
+    public function comments()
+    {
+      return $this->hasMany('App\Comment', 'omiyage_or_obento_id')->where('syurui', 'omiyage');
+
+    }    
 }

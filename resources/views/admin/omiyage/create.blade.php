@@ -50,10 +50,22 @@
                                 <img src="{{ asset('storage/image/' . $omiyage->image_path) }}">
                             @endif
                             </div>
-                            <div class="gaiyou">
-                　               <div class="tennmei">{{ $omiyage->tennmei}}</div>
-                                <div class="gaiyou">{{ $omiyage->gaiyou }}</div>
-                                <div class="nav-item active"><a href="{{ action('Admin\CommentController@create',['id' => $omiyage->id, 'syurui' => 'omiyage']) }}">コメントする</a></div>
+                            <div class="gaiyou-and-comment">
+                                <div class="gaiyou-wrapper">
+                    　               <div class="tennmei">{{ $omiyage->tennmei}}</div>
+                                    <div class="gaiyou">{{ $omiyage->gaiyou }}</div>
+                                    <div class="nav-item active"><a href="{{ action('Admin\CommentController@create',['id' => $omiyage->id, 'syurui' => 'omiyage']) }}">コメントする</a></div>
+                                    <input type="hidden" name="syurui" value="omiyage">
+                                    <input type="hidden" name="omiyage_or_obento_id" value="{{$omiyage->id}}">
+                                    <div class="edit"><a href="{{ action('Admin\OmiyageController@edit',['id' => $omiyage->id, 'syurui' => 'omiyage']) }}">編集</a></div>
+                                </div>
+                                <div class="comments">
+                                @if (count($omiyages) > 0)
+                                     @foreach($omiyage->comments->all() as $comment)
+                                        <div class="comment">{{$comment->comment}} </div>
+                                     @endforeach
+                                @endif
+                                </div>
                             </div>
                         </div>    
                     @endforeach

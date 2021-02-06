@@ -50,10 +50,22 @@
                                 <img src="{{ asset('storage/image/' . $obento->image_path) }}">
                     　　　　@endif
                     　　　　</div>
-                    　　　　<div class="gaiyou">
-                                <div class="tennmei">{{ $obento->tennmei }}</div>
-                                <div class="gaiyou">{{ $obento->gaiyou }}</div>
-                                <div class="nav-item active"><a href="{{ action('Admin\CommentController@create',['id' => $obento->id, 'syurui' => 'obento']) }}">コメントする</a></div>
+                    　　　　<div class="gaiyou-and-comment">
+                        　　　　<div class="gaiyou-wrapper">
+                                    <div class="tennmei">{{ $obento->tennmei }}</div>
+                                    <div class="gaiyou">{{ $obento->gaiyou }}</div>
+                                    <div class="nav-item active"><a href="{{ action('Admin\CommentController@create',['id' => $obento->id, 'syurui' => 'obento']) }}">コメントする</a></div>
+                                    <input type="hidden" name="syurui" value="obento">
+                                    <input type="hidden" name="omiyage_or_obento_id" value="{{$obento->id}}">
+                                    <div class="edit"><a href="{{ action('Admin\ObentoController@edit',['id' => $obento->id, 'syurui' => 'obento']) }}">編集</a></div>
+                                </div>
+                                <div class="comments">
+                                @if (count($obentos) > 0)
+                                     @foreach($obento->comments->all() as $comment)
+                                        <div class="comment">{{$comment->comment}} </div>
+                                     @endforeach
+                                @endif
+                                </div>
                             </div>
                         </div>
                     @endforeach

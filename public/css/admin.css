@@ -56,3 +56,19 @@ body {
   margin: 10px;
 }
 
+.gaiyou-wrapper {
+  width: 100%;
+  border: 1px solid blue;
+}
+
+.gaiyou-and-comment {
+  width: 100%;
+}
+
+.comment {
+  border: 3px solid;
+  padding: 10px;
+  margin: 10px;
+  border-color: greenyellow;
+}
+

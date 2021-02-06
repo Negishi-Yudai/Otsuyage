@@ -39,4 +39,39 @@ class OmiyageController extends Controller
         $omiyage->save();
          return redirect('admin/omiyage/create');
     }
+     public function edit(Request $request)
+  {
+      // Omiyage Modelからデータを取得する
+      $omiyage = Omiyage::find($request->id);
+      if (empty($omiyage)) {
+        abort(404);    
+      }
+      return view('admin.omiyage.edit', ['omiyage_form' => $omiyage]);
+  }
+    public function update(Request $request)
+  {
+      // Validationをかける
+      $this->validate($request, Omiyage::$rules);
+      // News Modelからデータを取得する
+      $omiyage = Omiyage::find($request->id);
+      // 送信されてきたフォームデータを格納する
+      $omiyage_form = $request->all();
+      if ($request->remove == 'true') {
+          $omiyage_form['image_path'] = null;
+      } elseif ($request->file('image')) {
+          $path = $request->file('image')->store('public/image');
+          $omiyage_form['image_path'] = basename($path);
+      } else {
+          if(isset($omiyage->image_path)){
+            $omiyage_form['image_path'] = $omiyage->image_path;
+          }
+      }
+      unset($omiyage_form['image']);
+      unset($omiyage_form['_token']);
+
+      // 該当するデータを上書きして保存する
+      $omiyage->fill($omiyage_form)->save();
+
+      return redirect('admin/omiyage/create');
+  }
 }

@@ -28,7 +28,25 @@ class CommentController extends Controller
                 $gaiyou = $obento->gaiyou;    
             }
             $comments = Comment::get();
-            return view('admin.comment.create', ['comments' => $comments, 'tennmei' => $tennmei, 'gaiyou' => $gaiyou]);
+            return view('admin.comment.create', ['comments' => $comments, 'tennmei' => $tennmei, 'gaiyou' => $gaiyou, 'syurui' => $request->syurui, 'omiyage_or_obento_id' => $request->id]);
+        }
+    }
+     public function store(Request $request)
+    {
+         $this->validate($request, Comment::$rules);
+        $comment = new Comment;
+        $form = $request->all();
+        
+        // フォームから送信されてきた_tokenを削除する
+        unset($form['_token']);
+        
+        // データベースに保存する
+        $comment->fill($form);
+        $comment->save();
+        if($request->syurui == "omiyage") {
+            return redirect('admin/omiyage/create');
+        } else {
+            return redirect('admin/obento/create');
         }
     }
 }

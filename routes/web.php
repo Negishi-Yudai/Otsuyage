@@ -46,4 +46,11 @@ Route::group(['prefix' => 'admin'], function() {
     Route::post('omiyage/store', 'Admin\OmiyageController@store')->middleware('auth');
     
      Route::get('comment/create', 'Admin\CommentController@create')->middleware('auth');
+     Route::post('comment/store', 'Admin\CommentController@store')->middleware('auth');
+     
+     Route::get('obento/edit', 'Admin\ObentoController@edit')->middleware('auth');
+     Route::post('obento/update', 'Admin\ObentoController@update')->middleware('auth');
+     
+     Route::get('omiyage/edit', 'Admin\OmiyageController@edit')->middleware('auth');
+     Route::post('omiyage/update', 'Admin\OmiyageController@update')->middleware('auth');
 });
