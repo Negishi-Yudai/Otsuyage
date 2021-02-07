@@ -74,4 +74,12 @@ class ObentoController extends Controller
 
       return redirect('admin/obento/create');
   }
+  public function delete(Request $request)
+  {
+      // 該当するobento Modelを取得
+      $obento = Obento::find($request->id);
+      // 削除する
+      $obento->delete();
+      return redirect('admin/obento/create');
+  }
 }

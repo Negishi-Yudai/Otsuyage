@@ -9,6 +9,9 @@ use App\Comment;
 use App\Omiyage;
 
 use App\Obento;
+
+use Illuminate\Support\Facades\Auth; //追加
+
 class CommentController extends Controller
 {
     //
@@ -40,6 +43,7 @@ class CommentController extends Controller
         // フォームから送信されてきた_tokenを削除する
         unset($form['_token']);
         
+        $comment->user_id = Auth::id();
         // データベースに保存する
         $comment->fill($form);
         $comment->save();

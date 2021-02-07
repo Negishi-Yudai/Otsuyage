@@ -74,4 +74,12 @@ class OmiyageController extends Controller
 
       return redirect('admin/omiyage/create');
   }
+  public function delete(Request $request)
+  {
+      // 該当するomiyage Modelを取得
+      $omiyage = Omiyage::find($request->id);
+      // 削除する
+      $omiyage->delete();
+      return redirect('admin/omiyage/create');
+  }
 }

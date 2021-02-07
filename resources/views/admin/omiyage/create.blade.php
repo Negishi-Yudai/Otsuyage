@@ -58,12 +58,17 @@
                                     <input type="hidden" name="syurui" value="omiyage">
                                     <input type="hidden" name="omiyage_or_obento_id" value="{{$omiyage->id}}">
                                     <div class="edit"><a href="{{ action('Admin\OmiyageController@edit',['id' => $omiyage->id, 'syurui' => 'omiyage']) }}">編集</a></div>
+                                    <div><a href="{{ action('Admin\OmiyageController@delete', ['id' => $omiyage->id]) }}">削除</a></div>
                                 </div>
                                 <div class="comments">
                                 @if (count($omiyages) > 0)
-                                     @foreach($omiyage->comments->all() as $comment)
-                                        <div class="comment">{{$comment->comment}} </div>
-                                     @endforeach
+                                    @foreach($omiyage->comments->all() as $comment)
+                                        @if($comment->user_id == Auth::id())
+                                            <div class="comment mine">{{$comment->comment}} </div>
+                                        @else
+                                            <div class="comment others">{{$comment->comment}} </div>
+                                        @endif
+                                    @endforeach
                                 @endif
                                 </div>
                             </div>

@@ -58,11 +58,16 @@
                                     <input type="hidden" name="syurui" value="obento">
                                     <input type="hidden" name="omiyage_or_obento_id" value="{{$obento->id}}">
                                     <div class="edit"><a href="{{ action('Admin\ObentoController@edit',['id' => $obento->id, 'syurui' => 'obento']) }}">編集</a></div>
+                                    <div><a href="{{ action('Admin\ObentoController@delete', ['id' => $obento->id]) }}">削除</a></div>
                                 </div>
                                 <div class="comments">
                                 @if (count($obentos) > 0)
                                      @foreach($obento->comments->all() as $comment)
-                                        <div class="comment">{{$comment->comment}} </div>
+                                        @if($comment->user_id == Auth::id())
+                                            <div class="comment mine">{{$comment->comment}} </div>
+                                        @else
+                                            <div class="comment others">{{$comment->comment}} </div>
+                                        @endif
                                      @endforeach
                                 @endif
                                 </div>
